@@ -11,7 +11,7 @@ export const Home = () => {
   const [posts, setPosts] = useState([]);
   const [allPosts, setAllPosts] = useState([]);
   const [page, setPage] = useState(0);
-  const [postsPerPage] = useState(0);
+  const [postsPerPage] = useState(2);
   const [searchValue, setSearchValue] = useState('');
 
   const handleLoadPosts = useCallback(async (page, postsPerPage) => {
@@ -21,8 +21,9 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
-    handleLoadPosts()
-  }, [handleLoadPosts, page, postsPerPage]);
+    console.log(new Date().toLocaleString('pt-BR'));
+    handleLoadPosts(0, postsPerPage);
+  }, [handleLoadPosts, postsPerPage]);
 
   const loadMorePosts = () => {
     const nextPage = page + postsPerPage;
